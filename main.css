@@ -1,0 +1,407 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cursive', sans-serif;
+    background: linear-gradient(to bottom right, #ffe4ec, #fff0f5);
+    color: #d63384;
+    text-align: center;
+  }
+  
+  .header {
+    padding: 40px 20px;
+    background-color: #fff0f6;
+    box-shadow: 0 2px 10px rgba(255, 105, 180, 0.1);
+  }
+  
+  .header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+  }
+  
+  .counter-box {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+    max-width: 600px;
+  }
+  
+  #timeTogether {
+    font-size: 1.5rem;
+    color: #d63384;
+  }
+  
+  .gallery {
+    padding: 40px 20px;
+    background: #fffafc;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(255, 105, 180, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-grid img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+  }
+  
+  .polaroid-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+  }
+  
+  .polaroid {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(255, 105, 180, 0.25);
+    width: 180px;
+    transform: rotateZ(calc(-3deg + 6deg * random()));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .polaroid:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(214, 51, 132, 0.4);
+  }
+  
+  .polaroid img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .polaroid-caption {
+    padding: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #b03060;
+    text-align: center;
+  }
+  
+  
+  .footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff0f6;
+    font-size: 0.9rem;
+    color: #a61e4d;
+  }
+  /* General fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1.5s ease-out;
+  }
+  
+  /* Floating hearts */
+  @keyframes floatHearts {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+  }
+  
+  .heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    color: #ff6b81;
+    animation: floatHearts 5s linear infinite;
+  }
+  
+  .typing-text {
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #d63384;
+    animation: typing 4s steps(30, end), blink 0.8s infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+  }
+  
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  #float-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  .floating-heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    animation: floatUp 7s linear forwards;
+  }
+  
+  @keyframes floatUp {
+    to {
+      transform: translateY(-100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  #anniversary-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle, #ffe6f0, #ffc2d1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 6s ease forwards;
+  }
+  
+  .anniversary-content {
+    text-align: center;
+    animation: popUp 1s ease-out;
+  }
+  
+  .anniversary-content h1 {
+    font-size: 3rem;
+    color: #d63384;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
+  
+  .anniversary-content p {
+    font-size: 1.2rem;
+    color: #a61e4d;
+    margin-top: 10px;
+  }
+  
+  @keyframes popUp {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+  }
+  
+  .confetti-heart {
+    position: fixed;
+    top: 0;
+    font-size: 24px;
+    z-index: 10000;
+    animation: fallDown 5s linear forwards;
+  }
+  
+  @keyframes fallDown {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s ease;
+  }
+  
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  #fireworksCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    pointer-events: none;
+  }
+  
+
+  .slideshow-section {
+    padding: 60px 20px;
+    background: #fff0f6;
+    text-align: center;
+  }
+  
+  .slideshow-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
+  }
+  
+  .slide {
+    display: none;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    animation: zoomFade 2s ease-in-out;
+  }
+  
+  @keyframes zoomFade {
+    0% { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .slideshow-container {
+      max-height: 300px;
+    }
+  
+    .slide {
+      max-height: 300px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .polaroid-grid {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+  
+    .polaroid-caption {
+      font-size: 0.75rem;
+    }
+  }
+    
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    h2 {
+      font-size: 1.4rem;
+    }
+  
+    #timeTogether {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .confetti-heart,
+    .floating-petal {
+      display: none;
+    }
+  }
+  
+  body {
+    font-size: clamp(14px, 2vw, 18px);
+  }
+  
+  .floating-letters {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+  }
+  
+  .letter-card {
+    perspective: 1000px;
+    animation: float 6s ease-in-out infinite;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .letter-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .letter-card:hover img {
+    transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.3);
+  }
+  
+  /* Specific styles for portrait and landscape */
+  .letter-card.portrait {
+    width: 220px;
+    height: 300px;
+  }
+  
+  .letter-card.landscape {
+    width: 360px;
+    height: 240px;
+  }
+  
+  .letter-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
+  }
+  
+  .letter-card:nth-child(odd) {
+    transform: rotate(-2deg);
+  }
+  .letter-card:nth-child(even) {
+    transform: rotate(2deg);
+  }
+  
+  .letter-card:hover::after {
+    content: "❤️";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    animation: heartbeat 1s infinite;
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+  
